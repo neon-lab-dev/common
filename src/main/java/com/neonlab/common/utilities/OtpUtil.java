@@ -1,4 +1,4 @@
-package com.neonlab.common.utils;
+package com.neonlab.common.utilities;
 
 import org.springframework.stereotype.Component;
 

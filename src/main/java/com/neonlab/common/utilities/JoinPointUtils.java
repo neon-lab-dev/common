@@ -1,6 +1,5 @@
 package com.neonlab.common.utilities;
 
-import com.neonlab.common.constants.GlobalConstants;
 import lombok.experimental.UtilityClass;
 import org.aspectj.lang.JoinPoint;
 
@@ -31,7 +30,7 @@ public class JoinPointUtils {
      * @param joinPoint the join point
      * @return the params
      */
-    public String getParams(final JoinPoint joinPoint) {
+    public static String getParams(final JoinPoint joinPoint) {
         return Arrays.stream(joinPoint.getArgs()).filter(Objects::nonNull).map(Object::toString)
                 .reduce((s, s2) -> s + COMMA + s2).orElse(EMPTY_STRING);
     }
