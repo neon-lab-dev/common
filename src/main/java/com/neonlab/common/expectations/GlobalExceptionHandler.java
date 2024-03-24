@@ -10,8 +10,8 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(value = InvalidInputException.class)
-    public ApiOutput<?> handleInvalidInputs(InvalidInputException ex, WebRequest request){
+    @ExceptionHandler(value = {InvalidInputException.class, ServerException.class})
+    public ApiOutput<?> handleInvalidInputs(Exception ex, WebRequest request){
         return new ApiOutput<String>(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
     }
 
