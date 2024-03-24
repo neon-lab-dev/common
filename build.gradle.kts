@@ -29,6 +29,10 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+
+	//added
+	implementation("org.apache.commons:commons-lang3:3.14.0")
+
 }
 
 tasks.withType<Test> {
