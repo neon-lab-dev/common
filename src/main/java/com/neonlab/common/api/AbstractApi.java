@@ -1,6 +1,7 @@
 package com.neonlab.common.api;
 
 import com.google.gson.Gson;
+import com.neonlab.common.expectations.InvalidInputException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -15,7 +16,7 @@ public abstract class AbstractApi<I, O> {
 
     @Autowired
     protected Gson gson;
-    public O process(I request) {
+    public O process(I request) throws InvalidInputException {
         logRequest(request);
         if (!validateInput(request)) {
             throw new IllegalArgumentException("Invalid input");
@@ -28,7 +29,7 @@ public abstract class AbstractApi<I, O> {
         return response;
     }
 
-    protected abstract O execute(I request);
+    protected abstract O execute(I request) throws InvalidInputException;
 
     protected void logRequest(I request) {
         log.info("Api request: {}", obj2str(request));
