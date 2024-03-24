@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.2.3"
+	id("org.springframework.boot") version "3.2.3" apply false
 	id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -14,6 +14,12 @@ java {
 configurations {
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
+dependencyManagement{
+	imports {
+		mavenBom ("org.springframework.boot:spring-boot-dependencies:3.2.3")
 	}
 }
 
