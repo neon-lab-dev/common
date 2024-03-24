@@ -16,15 +16,28 @@ public abstract class AbstractApi<I, O> {
 
     @Autowired
     protected Gson gson;
+
+    protected boolean logInput() {
+        return false;
+    }
+
+    protected boolean logOutput() {
+        return false;
+    }
+
     public O process(I request) throws InvalidInputException {
-        logRequest(request);
+        if (logInput()) {
+            logRequest(request);
+        }
         if (!validateInput(request)) {
             throw new IllegalArgumentException("Invalid input");
         }
         Instant startTime = Instant.now();
         O response = execute(request);
         Instant endTime = Instant.now();
-        logResponse(response);
+        if (logOutput()) {
+            logResponse(response);
+        }
         logApiFinished(getApiName(), startTime, endTime);
         return response;
     }
