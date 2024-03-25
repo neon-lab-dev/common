@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.2.3"
+	id("org.springframework.boot") version "3.2.3" apply false
 	id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -17,6 +17,12 @@ configurations {
 	}
 }
 
+dependencyManagement{
+	imports {
+		mavenBom ("org.springframework.boot:spring-boot-dependencies:3.2.3")
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -25,10 +31,17 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
+	compileOnly("org.projectlombok:lombok:1.18.30")
+	annotationProcessor("org.projectlombok:lombok:1.18.30")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+
+	//added
+	implementation("org.apache.commons:commons-lang3:3.14.0")
+	implementation("io.jsonwebtoken:jjwt:0.12.5")
+	implementation ("org.modelmapper:modelmapper:3.1.1")
+
+
 }
 
 tasks.withType<Test> {
