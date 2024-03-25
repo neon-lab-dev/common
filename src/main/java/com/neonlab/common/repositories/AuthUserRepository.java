@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface AuthUserRepository extends JpaRepository<AuthUser, String> {
 
-    /*@Override
-    Optional<AuthUser> findById(String Id);*/
+    Optional<AuthUser> findByUserId(String userId);
+
     Optional<AuthUser> findByUserNameAndVerificationModeOrderByCreatedAtDesc(String userName, VerificationMode mode);
 
 }

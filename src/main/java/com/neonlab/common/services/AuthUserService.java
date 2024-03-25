@@ -59,6 +59,11 @@ public class AuthUserService {
                 new InvalidInputException(String.format("AuthUser not found with id %s.",id)));
     }
 
+    public AuthUser fetchLatestByUserId(String userId) throws InvalidInputException {
+        return authUserRepository.findByUserId(userId)
+                .orElseThrow(() -> new InvalidInputException(String.format("AuthUser not found with userId %s", userId)));
+    }
+
     public AuthUser save(AuthUser authUser){
         return authUserRepository.save(authUser);
     }

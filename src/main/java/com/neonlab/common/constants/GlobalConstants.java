@@ -9,7 +9,9 @@ package com.neonlab.common.constants;
 
 public class GlobalConstants {
 
-    public static String ERROR_OCCURED = "Error: {}";
+    public static String ERROR_OCCURRED = "Error: {}";
+
+    public static String TOKEN = "token";
 
     public static String EMPTY_STRING = "";
 
