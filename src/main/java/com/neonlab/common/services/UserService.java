@@ -32,4 +32,10 @@ public class UserService {
                 .orElseThrow(() -> new InvalidInputException(String.format("User not found with primary Phone no %s", phone)));
     }
 
+    public User fetchEitherByPrimaryPhoneOrEmail(String searchParam) throws InvalidInputException {
+        return userRepository.findByPrimaryPhoneNoOrEmail(searchParam)
+                .orElseThrow(() ->
+                        new InvalidInputException(String.format("User not found with either primary phone no or email as %s", searchParam)));
+    }
+
 }

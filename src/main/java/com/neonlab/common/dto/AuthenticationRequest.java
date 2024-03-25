@@ -7,5 +7,6 @@ public class AuthenticationRequest {
 
     private String deviceId;
     private String purpose;
+    private String mode;
     private String otp;
 }

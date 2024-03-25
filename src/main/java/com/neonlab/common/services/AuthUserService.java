@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Slf4j
@@ -25,12 +26,16 @@ public class AuthUserService {
 
     public AuthUser createAuthUser(Otp otp, PhoneNoVerificationRequest request){
         var retVal = getAuthUserByUserNameAndMode(otp.getCommunicatedTo(), otp.getVerificationMode());
-        retVal.setAuthType(AuthType.OTP);
-        retVal.setUserName(otp.getCommunicatedTo());
-        retVal.setDeviceId(request.getDeviceId());
-        retVal.setVerificationMode(otp.getVerificationMode());
-        retVal.setJWTtoken(UUID.randomUUID().toString());
-        return authUserRepository.save(retVal);
+        if (Objects.isNull(retVal)){
+            retVal = new AuthUser();
+            retVal.setAuthType(AuthType.OTP);
+            retVal.setUserName(otp.getCommunicatedTo());
+            retVal.setDeviceId(request.getDeviceId());
+            retVal.setVerificationMode(otp.getVerificationMode());
+            retVal.setJWTtoken(UUID.randomUUID().toString());
+            retVal = authUserRepository.save(retVal);
+        }
+        return retVal;
     }
 
     public AuthUser getAuthUserByUserNameAndMode(String username, VerificationMode mode){
@@ -39,7 +44,7 @@ public class AuthUserService {
         } catch (InvalidInputException e) {
             log.warn(e.getMessage());
         }
-        return new AuthUser();
+        return null;
     }
 
     public AuthUser fetchAuthUserByUserNameAndMode(String username, VerificationMode mode) throws InvalidInputException {
