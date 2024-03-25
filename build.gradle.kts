@@ -38,6 +38,9 @@ dependencies {
 
 	//added
 	implementation("org.apache.commons:commons-lang3:3.14.0")
+	implementation("io.jsonwebtoken:jjwt:0.12.5")
+	implementation ("org.modelmapper:modelmapper:3.1.1")
+
 
 }
 

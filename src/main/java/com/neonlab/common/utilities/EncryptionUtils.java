@@ -7,7 +7,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-public class UUIDEncryptor {
+public class EncryptionUtils {
 
     public static String encryptUUID(String uuid) throws Exception {
         // Create AES cipher

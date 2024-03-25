@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class AuthenticationRequest {
 
-    private String verificationPurpose;
+    private String deviceId;
+    private String purpose;
     private String otp;
 }

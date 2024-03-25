@@ -9,6 +9,8 @@ package com.neonlab.common.constants;
 
 public class GlobalConstants {
 
+    public static String ERROR_OCCURED = "Error: {}";
+
     public static String EMPTY_STRING = "";
 
     // the below class only stores the symbols constants

@@ -1,4 +1,4 @@
-package com.neonlab.common.dto;
+package com.neonlab.common.enums;
 
 import lombok.Getter;
 
