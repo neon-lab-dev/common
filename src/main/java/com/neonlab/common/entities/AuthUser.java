@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @Table(name = "auth_user", indexes = {
-        @Index(name = "idx_user_id", columnList = "user_id"),
+        @Index(name = "idx_auth_user_id", columnList = "user_id"),
         @Index(name = "idx_user_name", columnList = "user_name"),
         @Index(name = "idx_auth_type", columnList = "auth_type")
 })

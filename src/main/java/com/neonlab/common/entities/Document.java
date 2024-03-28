@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 //common repo
 @Table(name = "document", indexes = {
-        @Index(name = "idx_user_id", columnList = "user_id")
+        @Index(name = "idx_doc_user_id", columnList = "user_id")
 })
 public class Document extends Generic {
 

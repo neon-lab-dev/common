@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "address", indexes = {
-        @Index(name = "idx_user_id", columnList = "user_id"),
+        @Index(name = "idx_address_user_id", columnList = "user_id"),
         @Index(name = "idx_address_name", columnList = "address_name")
 })
 public class Address extends Generic {
